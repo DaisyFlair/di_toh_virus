@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>October 3? 🥹</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: "Trebuchet MS", sans-serif;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #dff4ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        width: 90%;
+        max-width: 520px;
+        padding: 40px 30px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+
+    h1 {
+        color: #4b91c9;
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #4b91c9;
+    }
+
+    p {
+        color: #777;
+        line-height: 1.5;
+    }
+
+    .character {
+        font-size: 75px;
+    }
+
+    /* FIRST PAGE BUTTONS */
+
+    .buttons {
+        margin-top: 30px;
+        height: 100px;
+        position: relative;
+    }
+
+    button {
+        border: none;
+        padding: 15px 28px;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    #yes {
+        background: #72b9ed;
+        color: white;
+        position: relative;
+        z-index: 2;
+    }
+
+    #yes:hover {
+        background: #559fd5;
+    }
+
+    #no {
+        background: #eeeeee;
+        color: #777;
+        position: absolute;
+        margin-left: 15px;
+    }
+
+    /* ACTIVITY PAGE */
+
+    #activities,
+    #success {
+        display: none;
+    }
+
+    .activity-list {
+        text-align: left;
+        margin-top: 25px;
+    }
+
+    .activity {
+        display: block;
+        background: #f3faff;
+        border: 2px solid #d8efff;
+        padding: 15px;
+        margin: 12px 0;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .activity:hover {
+        transform: scale(1.02);
+        background: #e8f6ff;
+    }
+
+    .activity input {
+        margin-right: 10px;
+        transform: scale(1.3);
+    }
+
+    .locked {
+        background: #e4f5ff;
+        cursor: default;
+    }
+
+    .locked:hover {
+        transform: none;
+    }
+
+    .confirm {
+        margin-top: 20px;
+        background: #72b9ed;
+        color: white;
+        width: 100%;
+    }
+
+    .confirm:hover {
+        background: #559fd5;
+        transform: scale(1.03);
+    }
+
+    #warning {
+        color: #e88989;
+        display: none;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    /* FINAL PAGE */
+
+    .heart {
+        font-size: 65px;
+        animation: bounce .7s infinite alternate;
+    }
+
+    @keyframes bounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-12px);
+        }
+    }
+
+    #chosenActivities {
+        background: #f3faff;
+        padding: 15px;
+        border-radius: 15px;
+        margin-top: 20px;
+        color: #555;
+        line-height: 1.8;
+    }
+</style>
+</head>
+
+<body>
+
+
+<!-- PAGE 1 -->
+
+<div class="card" id="question">
+
+    <div class="character">🐱💙</div>
+
+    <h1>Would you be my date on October 3? 🥹</h1>
+
+    <p>
+        I am asking very nicely...<br>
+        choose wisely hubby :3
+    </p>
+
+    <div class="buttons">
+
+        <button id="yes" onclick="sayYes()">
+            YES 💙
+        </button>
+
+        <button id="no" onclick="runAway()">
+            NO
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- PAGE 2 -->
+
+<div class="card" id="activities">
+
+    <div class="character">🥹👉👈</div>
+
+    <h2>YAY! Now pick what we're doing &gt;:3</h2>
+
+    <p>
+        Movie night is non-negotiable hehe 🍿<br>
+        Pick at least one more!
+    </p>
+
+
+    <div class="activity-list">
+
+        <!-- LOCKED MOVIE -->
+
+        <label class="activity locked">
+
+            <input
+                type="checkbox"
+                checked
+                disabled
+            >
+
+            🍿 <b>Movie Night</b><br>
+
+            <small>
+                Already part of the plan :3
+            </small>
+
+        </label>
+
+
+        <!-- OPTION 1 -->
+
+        <label class="activity">
+
+            <input
+                type="checkbox"
+                class="choice"
+                value="🎧 Music Exchange"
+            >
+
+            🎧 <b>Music Exchange</b><br>
+
+            <small>
+                We pick songs for each other,
+                listen together, and explain
+                why we chose them.
+            </small>
+
+        </label>
+
+
+        <!-- OPTION 2 -->
+
+        <label class="activity">
+
+            <input
+                type="checkbox"
+                class="choice"
+                value="💌 Question Night"
+            >
+
+            💌 <b>Question Night</b><br>
+
+            <small>
+                Cute, random, and slightly
+                deeper questions so we can
+                know each other even more.
+            </small>
+
+        </label>
+
+
+        <!-- OPTION 3 -->
+
+        <label class="activity">
+
+            <input
+                type="checkbox"
+                class="choice"
+                value="🎨 Draw Each Other"
+            >
+
+            🎨 <b>Draw Each Other</b><br>
+
+            <small>
+                We draw each other and reveal
+                our masterpieces at the same time 😭
+            </small>
+
+        </label>
+
+    </div>
+
+
+    <div id="warning">
+        HUBBY 😭 pick at least one first!
+    </div>
+
+
+    <button
+        class="confirm"
+        onclick="confirmDate()"
+    >
+        LOCK OUR DATE 🔒💙
+    </button>
+
+</div>
+
+
+
+<!-- PAGE 3 -->
+
+<div class="card" id="success">
+
+    <div class="heart">💙</div>
+
+    <h1>DATE LOCKED!! 🥹</h1>
+
+    <p>
+        October 3 💙<br>
+        It's a date, hubby :3
+    </p>
+
+
+    <div id="chosenActivities"></div>
+
+
+    <p>
+        See you thereeee 🥹💙
+    </p>
+
+</div>
+
+
+
+<script>
+
+let attempts = 0;
+
+
+const messages = [
+    "Sure ka? 🥹",
+    "Geh na 😭",
+    "Hachiware would never 😔",
+    "Please hubby 🥹",
+    "HUBBY NAMAN E 😭"
+];
+
+
+function runAway() {
+    attempts++;
+
+    const no = document.getElementById("no");
+    const yes = document.getElementById("yes");
+
+    const maxX = window.innerWidth - no.offsetWidth;
+    const maxY = window.innerHeight - no.offsetHeight;
+
+    no.style.position = "fixed";
+    no.style.left = Math.random() * maxX + "px";
+    no.style.top = Math.random() * maxY + "px";
+
+    // NO gets smaller
+    const noScale = Math.max(0.15, 1 - attempts * 0.13);
+    no.style.transform = `scale(${noScale})`;
+
+    // YES gets bigger
+    const yesScale = 1 + attempts * 0.12;
+    yes.style.transform = `scale(${yesScale})`;
+
+    // YES text changes
+    yes.innerText =
+        messages[Math.min(attempts - 1, messages.length - 1)];
+}
+
+function sayYes() {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("activities").style.display = "block";
+}
+
+
+// =========================
+// EXACTLY 2 ACTIVITIES ONLY
+// =========================
+
+const activityChoices = document.querySelectorAll(".choice");
+
+activityChoices.forEach(choice => {
+    choice.addEventListener("change", () => {
+
+        const checked =
+            document.querySelectorAll(".choice:checked");
+
+        // Once 2 are selected, disable the remaining option
+        if (checked.length === 2) {
+            activityChoices.forEach(option => {
+                if (!option.checked) {
+                    option.disabled = true;
+                }
+            });
+        } else {
+            activityChoices.forEach(option => {
+                option.disabled = false;
+            });
+        }
+
+        document.getElementById("warning").style.display = "none";
+    });
+});
+
+
+let finalPlan = "";
+
+
+// =========================
+// CONFIRM DATE
+// =========================
+
+function confirmDate() {
+
+    const choices =
+        document.querySelectorAll(".choice:checked");
+
+    const warning =
+        document.getElementById("warning");
+
+    // Must choose EXACTLY 2
+    if (choices.length !== 2) {
+        warning.innerText =
+            "Hubby 😭 choose exactly TWO activities!";
+        warning.style.display = "block";
+        return;
+    }
+
+    warning.style.display = "none";
+
+    let selectedHTML = "🍿 Movie Night<br>";
+    let selectedText = "🍿 Movie Night";
+
+    choices.forEach(choice => {
+        selectedHTML += choice.value + "<br>";
+        selectedText += " + " + choice.value;
+    });
+
+    finalPlan = selectedText;
+
+    document.getElementById("activities").style.display = "none";
+    document.getElementById("success").style.display = "block";
+
+    document.getElementById("chosenActivities").innerHTML =
+        "<b>Our October 3 plans:</b><br><br>" +
+        selectedHTML +
+        `
+        <br>
+        <button class="confirm" onclick="copyPlans()">
+            Copy Our Plans 💌
+        </button>
+        `;
+}
+
+
+// =========================
+// COPY RESULT
+// =========================
+
+function copyPlans() {
+
+    const message =
+`IT'S A DATE 🥹💙
+
+October 3!
+
+I chose:
+${finalPlan}
+
+See you, hubby :3 💙`;
+
+    navigator.clipboard.writeText(message);
+
+    alert(
+        "Copied! 💙 Now send it to me, hubby >:3"
+    );
+}
+</script>
+
+</body>
+</html>
